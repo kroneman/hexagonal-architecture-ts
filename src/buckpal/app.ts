@@ -1,9 +1,13 @@
-import express from "express";
-import {attachControllers} from "@decorators/express";
+import 'reflect-metadata';
+import express from 'express';
 
-import SendMoneyController from "./in/web/SendMoneyController";
+import SendMoneyController from './adapter/in/web/SendMoneyController';
+import { attachControllers } from '@decorators/express';
+import registerProviders from './config/container';
 
 const app = express();
+
+registerProviders();
 attachControllers(app, [SendMoneyController]);
 
 export default app;
