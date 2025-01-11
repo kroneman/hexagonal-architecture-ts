@@ -3,6 +3,7 @@ import SendMoneyCommand from '../../port/in/SendMoneyCommand';
 import { Inject, Injectable } from '@decorators/di';
 import MoneyTransferProperties from './MoneyTransferProperties';
 import ThresholdExceededException from './ThresholdExceededException';
+import { subDays } from 'date-fns';
 
 @Injectable()
 class SendMoneyService implements SendMoneyUseCase {
@@ -13,6 +14,9 @@ class SendMoneyService implements SendMoneyUseCase {
 
   sendMoney(command: SendMoneyCommand): boolean {
     this.checkThreshold(command);
+
+    const baselineDate = subDays(new Date(), 10);
+    // const sourceAccount =
 
     return true;
   }
