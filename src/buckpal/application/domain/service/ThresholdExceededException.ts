@@ -1,7 +1,7 @@
 import type Money from '../model/Money';
 
 class ThresholdExceededException extends Error {
-  status = 500;
+  status = 400;
   name = 'ThresholdExceededException';
 
   constructor(threshold: Money, actual: Money) {

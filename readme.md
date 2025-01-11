@@ -5,9 +5,9 @@ The goal is to gain understanding and share observations.
 
 ## Architectural rules
 
-- [ ] Enforce architectural patterns using a tool (don't rely on discipline)
-- [ ] Use dependency injection to maintain loose coupling and apply the dependency inversion principle
-- [ ] Inbound adapters should have no direct knowledge of your domain, should rely on commands and useCases instead, this is enforced in [.dependency-cruiser](./.dependency-cruiser.js)
+- Enforce architectural patterns using a tool (don't rely on discipline)
+- Use dependency injection to maintain loose coupling and apply the dependency inversion principle
+- Inbound adapters should have no direct knowledge of your domain, should rely on commands and useCases instead, this is enforced in [.dependency-cruiser](./.dependency-cruiser.js)
 
 ## Checklist
 
@@ -15,8 +15,15 @@ The goal is to gain understanding and share observations.
 - [x] Set up dependency injection in order to reduce express / nodejs boilerplate
 - [x] Dependency injection in order to associate an interface with a concrete class for loose coupling
 - [ ] Finish implementing the typescript equivalent of [thombergs/buckpal](https://github.com/thombergs/buckpal)
-- [ ] Implement additional ports, adapters and use cases
-- [ ] Enforce architectural boundaries using architecture tests like `archunit` or equivalent
+- [x] Implement additional ports, adapters and use cases
+- [x] Enforce architectural boundaries using architecture tests like `archunit` or equivalent
+
+## Questions / Difference Between original and my implementation
+
+### Is there actually a rule that adapters shouldn't know about entities in the domain?
+
+In the example from the book the [SendMoneyController](https://github.com/thombergs/buckpal/blob/master/src/main/java/io/reflectoring/buckpal/adapter/in/web/SendMoneyController.java) has knowledge of both the `Account` domain model and the `Money` domain model.
+I guess this is covered in chapter 9 where there are multiple mapping strategies
 
 ## Observations
 

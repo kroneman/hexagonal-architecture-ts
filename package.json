@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node ./src/buckpal/server.ts",
-    "test": "jest",
+    "test": "yarn tsc && yarn validate-dependencies && jest",
     "format": "prettier src --write",
     "tsc": "tsc --noEmit",
     "validate-dependencies": "depcruise src"

@@ -2,6 +2,23 @@
 module.exports = {
   forbidden: [
     {
+      name: 'models-should-not-depend-on-anything-outside-of-models',
+      severity: 'error',
+      comment: 'Page 112 of "Get your hands dirty on clean architecture"',
+      from: {
+        path: [
+          '^src/([^/]+)/application/domain/model/.+',
+          '^src/([^/]+)/application/domain/model/([^/]+)/.+'
+        ]
+      },
+      to: {
+        pathNot: [
+          '^src/$1/application/domain/model/.+',
+          '^src/$1/application/domain/model/$2/.+'
+        ]
+      }
+    },
+    {
       name: 'input-ports-should-not-depend-on-domain-directly',
       severity: 'error',
       comment: `Input ports should rely on commands and use cases instead`,
@@ -13,7 +30,15 @@ module.exports = {
       }
     },
     {
-      name: 'domain-logic-should-not-depend-directly-on-adapters'
+      name: 'domain-logic-should-not-depend-directly-on-adapters',
+      severity: 'error',
+      comment: `The application should interface with outgoing ports instead`,
+      from: {
+        path: '^src/([^/]+)/application/domain/([^/]+)/.+'
+      },
+      to: {
+        path: '^src/([^/]+)/adapter/([^/]+)/.+'
+      }
     },
 
     // generated rules
